@@ -29,8 +29,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Build with Maven
-        working-directory: spring-boot-app
-        run: mvn clean package -Pbuild-and-push-docker-image -DskipTests
+        run: cd spring-boot-app && mvn clean package -Pbuild-and-push-docker-image -DskipTests
 
       - name: Generate Build Number
         id: build-number
@@ -46,6 +45,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build & Push Spring Boot Docker Image
-        working-directory: spring-boot-app
         run: |
-          mvn compile jib:build -Pbuild-and-push-docker-image -Dapp.image.tag=${{ env.BUILD_NUMBER }}
+          cd spring-boot-app && mvn compile jib:build -Pbuild-and-push-docker-image -Dapp.image.tag=${{ env.BUILD_NUMBER }}
