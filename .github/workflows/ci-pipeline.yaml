@@ -1,4 +1,4 @@
-name: Hands-on Lab Spring Boot Build & Docker Image
+name: Hands-on Lab Spring Boot & Consul & Flux GitOps 
 
 on:
   push:
