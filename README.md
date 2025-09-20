@@ -173,6 +173,14 @@ consul-consul-webhook-cert-manager-56c7989b54-lq6wb   1/1     Running   0       
 flux install
 kubectl get pods -n flux-system
 ```
+- Update flux let it support subpath 
+```bash 
+brew update
+brew upgrade fluxcd/tap/flux
+flux install --version=latest \
+  --namespace=flux-system \
+  --components=source-controller,kustomize-controller,helm-controller,notification-controller
+```
 
 **Expected Output**
 
@@ -189,12 +197,11 @@ source-controller-58cc6ccdd6-slbns         1/1     Running   0          3m37s
 ### Configure GitOps source repository 
 ```bash 
 flux create source git shared-config \
-  --url=https://github.com/<github_user>/<github_repo> \
+  --url=https://github.com/Rurutia1027/hands-on-shared-config-repo \
   --branch=main \
-  --sub-path=apps/spring-consul-app \ 
   --interval=1m \
-  --export > shared-config-source.yaml
-kubectl apply -f shared-config-source.yaml
+  --export > config/shared-config-source.yaml
+kubectl apply -f config/shared-config-source.yaml
 ```
 
 **Parameters explained**:

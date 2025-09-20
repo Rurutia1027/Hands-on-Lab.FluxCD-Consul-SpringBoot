@@ -4,7 +4,7 @@ metadata:
   name: gitops-consul-sync
   namespace: flux-system
 spec:
-  schedule: "*/2 * * * *"  # sync every 2 mins
+  schedule: "*/2 * * * *"  # 每 2 分钟执行一次
   jobTemplate:
     spec:
       template:
@@ -16,12 +16,9 @@ spec:
             args:
               - |
                 apk add --no-cache curl bash git
-                # Clone our Git Repo for storing config files as config center
                 git clone https://github.com/Rurutia1027/hands-on-shared-config-repo.git /tmp/config-repo
-                # traverse all YAML files under subpath of
                 for f in /tmp/config-repo/Hands-on-Lab.FluxCD-Consul-SpringBoot/spring-consul-app/*.yaml; do
                   APP=$(basename $f .yaml)
-                  echo "🔄 Syncing $APP config to Consul"
-                  curl --request PUT --data-binary @${f} http://consul-consul-server.consul:8500/v1/kv/config/$APP/data
-                done
+                  curl --request PUT --data-binary @${f} http://consul-consul-server.consul:8500/v1/kv/config/spring-consul-config-app/$APP
+                done            
           restartPolicy: OnFailure

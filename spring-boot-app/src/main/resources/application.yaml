@@ -7,8 +7,11 @@ spring:
     consul:
       # in dev mode, declare the environment variable in the IDEA/Edit Configuration
       host: ${SPRING_CLOUD_CONSUL_HOST:consul-consul-server.consul}
-      port: ${SPRING_CLOUD_CONSUL_PORT:18500}
+      port: ${SPRING_CLOUD_CONSUL_PORT:8500}
       config:
+        watch:
+          enabled: true
+          delay: 10000 # MS
         format: yaml
         prefixes:
           - config/spring-consul-config-app
@@ -17,6 +20,7 @@ spring:
 
 server:
   port: 8180
+
 custom:
   config:
     featureA: true

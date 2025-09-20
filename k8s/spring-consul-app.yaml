@@ -22,7 +22,14 @@ spec:
             - name: SPRING_CLOUD_CONSUL_HOST
               value: "consul-consul-server.consul"
             - name: SPRING_CLOUD_CONSUL_PORT
-              value: "8500" 
+              value: "8500"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
@@ -36,4 +43,4 @@ spec:
   ports:
     - port: 8180
       targetPort: 8180
-      nodePort: 30080              
+      nodePort: 30080
