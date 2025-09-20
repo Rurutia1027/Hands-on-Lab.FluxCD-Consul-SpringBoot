@@ -109,6 +109,18 @@ kind create cluster --name hands-on-flux --config config/kind-config.yml
 ```
 > `config/kind-config.yml` includes Kind nodes configuration. 
 
+**Expected Output**
+
+```bash
+# kubectl get ns -A
+NAME                 STATUS   AGE
+default              Active   73m
+kube-node-lease      Active   73m
+kube-public          Active   73m
+kube-system          Active   73m
+local-path-storage   Active   73m
+```
+
 ### Install Consul using Helm 
 ```bash 
 kubectl create ns consul
@@ -118,11 +130,61 @@ helm install consul hashicorp/consul -n consul
 kubectl get pods -n consul
 ```
 
+**Expected Outputs**
+```bash
+# kubectl create ns consul
+namespace/consul created
+```
+
+```bash
+NAME: consul
+LAST DEPLOYED: Sat Sep 20 15:08:34 2025
+NAMESPACE: consul
+STATUS: deployed
+REVISION: 1
+NOTES:
+Thank you for installing HashiCorp Consul!
+
+Your release is named consul.
+
+To learn more about the release, run:
+
+  $ helm status consul --namespace consul
+  $ helm get all consul --namespace consul
+
+Consul on Kubernetes Documentation:
+https://www.consul.io/docs/platform/k8s
+
+Consul on Kubernetes CLI Reference:
+https://www.consul.io/docs/k8s/k8s-cli
+NAME                                                  READY   STATUS              RESTARTS   AGE
+consul-consul-connect-injector-5697c6c95-ng7ws        0/1     ContainerCreating   0          27s
+consul-consul-server-0                                0/1     PodInitializing     0          27s
+
+# kubectl get pods -n consul
+NAME                                                  READY   STATUS    RESTARTS   AGE
+consul-consul-connect-injector-5697c6c95-ng7ws        0/1     Running   0          49s
+consul-consul-server-0                                1/1     Running   0          49s
+consul-consul-webhook-cert-manager-56c7989b54-lq6wb   1/1     Running   0          49s
+```
+
 ### Install FluxCD 
 ```bash 
 flux install
 kubectl get pods -n flux-system
 ```
+
+**Expected Output**
+
+```bash
+# kubectl get pods -n flux-system
+NAME                                       READY   STATUS    RESTARTS   AGE
+helm-controller-556d57bfc9-t79ml           1/1     Running   0          3m37s
+kustomize-controller-64ffd8bc7c-ghqnx      1/1     Running   0          3m37s
+notification-controller-66f49d8984-gt2ml   1/1     Running   0          3m37s
+source-controller-58cc6ccdd6-slbns         1/1     Running   0          3m37s
+```
+
 
 ### Configure GitOps source repository 
 ```bash 
