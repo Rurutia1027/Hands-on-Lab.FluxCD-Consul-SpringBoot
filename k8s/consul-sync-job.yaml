@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gitops-consul-sync
+  namespace: flux-system
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: sync
+            image: alpine:3.19
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                apk add --no-cache curl bash git
+                git clone https://github.com/Rurutia1027/hands-on-shared-config-repo.git /tmp/config-repo
+                for f in /tmp/config-repo/*.yml; do
+                  APP=$(basename $f .yml)
+                  echo "🔄 Syncing $APP config to Consul"
+                  curl --request PUT --data-binary @${f} http://consul-consul-server.consul:8500/v1/kv/config/$APP/data
+                done
+          restartPolicy: OnFailure

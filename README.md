@@ -70,9 +70,6 @@ Hands-on-Lab.FluxCD-Consul-SpringBoot/
 ├── scripts/
 │   └── kind-create-cluster.sh    # Helper script to create local Kind cluster
 │
-├── docs/
-│   └── architecture.md           # Architecture diagram & explanations
-│
 └── README.md                     # This file
 ```
 
