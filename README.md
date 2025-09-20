@@ -20,9 +20,9 @@ This repository is a **hands-on**, **lightweight**, and **verifiable lab** for e
 ```mermaid
 flowchart TD
     subgraph "Hands-on Lab Flow"
-        A[Remote Git Repo (config-repo)]
-        B[FluxCD Controller (detects changes)]
-        C[CronJob in Cluster (Git → Consul KV)]
+        A[Remote Git Repo  ]
+        B[FluxCD Controller ]
+        C[CronJob in Cluster  ]
         D[Consul KV Store]
         E[Spring Boot App listens & reacts]
         
