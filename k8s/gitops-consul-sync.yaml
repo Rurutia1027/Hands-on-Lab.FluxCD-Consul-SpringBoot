@@ -4,7 +4,7 @@ metadata:
   name: gitops-consul-sync
   namespace: flux-system
 spec:
-  schedule: "*/2 * * * *"  # 每 2 分钟执行一次
+  schedule: "*/2 * * * *"  
   jobTemplate:
     spec:
       template:
