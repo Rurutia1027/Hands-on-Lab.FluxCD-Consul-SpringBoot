@@ -19,6 +19,8 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.6</spring-cloud.version>
+        <image>nanachi1027/${project.artifactId}:${app.image.tag}</image>
+        <app.image.tag>latest</app.image.tag>
     </properties>
 
     <dependencies>
