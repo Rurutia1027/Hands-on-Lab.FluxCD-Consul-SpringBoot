@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
         - name: app
-          image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
-          imagePullPolicy: Always
+          image: nanachi1027/spring-consul-config-app:20250921143025
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8180
           env:
             - name: SPRING_CLOUD_CONSUL_HOST
-              value: "consul-consul-server.consul"
+              value: "consul-consul-server.consul.svc.cluster.local"
             - name: SPRING_CLOUD_CONSUL_PORT
               value: "8500"
           resources:
