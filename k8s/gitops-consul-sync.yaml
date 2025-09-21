@@ -4,7 +4,7 @@ metadata:
   name: gitops-consul-sync
   namespace: flux-system
 spec:
-  schedule: "*/2 * * * *"  
+  schedule: "*/2 * * * *" 
   jobTemplate:
     spec:
       template:
@@ -17,8 +17,6 @@ spec:
               - |
                 apk add --no-cache curl bash git
                 git clone https://github.com/Rurutia1027/hands-on-shared-config-repo.git /tmp/config-repo
-                for f in /tmp/config-repo/Hands-on-Lab.FluxCD-Consul-SpringBoot/spring-consul-app/*.yaml; do
-                  APP=$(basename $f .yaml)
-                  curl --request PUT --data-binary @${f} http://consul-consul-server.consul:8500/v1/kv/config/spring-consul-config-app/$APP
-                done            
+                FILE="/tmp/config-repo/Hands-on-Lab.FluxCD-Consul-SpringBoot/spring-consul-app/application.yaml"
+                curl --request PUT --data-binary @"${FILE}" http://consul-consul-server.consul:8500/v1/kv/config/spring-consul-config-app/application.prod
           restartPolicy: OnFailure

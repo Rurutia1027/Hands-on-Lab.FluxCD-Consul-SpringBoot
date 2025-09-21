@@ -27,3 +27,9 @@ custom:
     featureB: "Hello, Hands-on Lab!"
     maxItems: 10
     message: "Welcome to Flux + Consul integration demo!"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, info

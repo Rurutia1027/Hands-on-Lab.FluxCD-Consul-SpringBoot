@@ -1,30 +1,21 @@
 package com.aston.handson.springapp.controller;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import com.aston.handson.springapp.props.MyConfigProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RefreshScope
 @RestController
+@RequiredArgsConstructor
 public class ConsulConfigController {
-    @Value("${custom.config.featureA}")
-    private boolean featureA;
 
-    @Value("${custom.config.featureB}")
-    private String featureB;
-
-    @Value("${custom.config.maxItems}")
-    private int maxItems;
-
-    @Value("${custom.config.message}")
-    private String message;
+    private final MyConfigProperties config;
 
     @GetMapping("/app-custom-config")
     public String getConfig() {
         return String.format(
                 "featureA=%s, featureB=%s, maxItems=%d, message=%s",
-                featureA, featureB, maxItems, message
+                config.isFeatureA(), config.getFeatureB(), config.getMaxItems(), config.getMessage()
         );
     }
 }

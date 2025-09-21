@@ -105,7 +105,7 @@ Hands-on-Lab.FluxCD-Consul-SpringBoot/
 ### Create a local Kind cluster using `config/kind-config.yml`:
 
 ```bash 
-kind create cluster --name hands-on-flux --config config/kind-config.yml
+kind create cluster --name hands-on-flux --config config/kind-config.yaml
 ```
 > `config/kind-config.yml` includes Kind nodes configuration. 
 
@@ -133,33 +133,7 @@ kubectl get pods -n consul
 **Expected Outputs**
 ```bash
 # kubectl create ns consul
-namespace/consul created
-```
-
-```bash
-NAME: consul
-LAST DEPLOYED: Sat Sep 20 15:08:34 2025
-NAMESPACE: consul
-STATUS: deployed
-REVISION: 1
-NOTES:
-Thank you for installing HashiCorp Consul!
-
-Your release is named consul.
-
-To learn more about the release, run:
-
-  $ helm status consul --namespace consul
-  $ helm get all consul --namespace consul
-
-Consul on Kubernetes Documentation:
-https://www.consul.io/docs/platform/k8s
-
-Consul on Kubernetes CLI Reference:
-https://www.consul.io/docs/k8s/k8s-cli
-NAME                                                  READY   STATUS              RESTARTS   AGE
-consul-consul-connect-injector-5697c6c95-ng7ws        0/1     ContainerCreating   0          27s
-consul-consul-server-0                                0/1     PodInitializing     0          27s
+namespace/consul created                             0/1     PodInitializing     0          27s
 
 # kubectl get pods -n consul
 NAME                                                  READY   STATUS    RESTARTS   AGE
@@ -172,14 +146,6 @@ consul-consul-webhook-cert-manager-56c7989b54-lq6wb   1/1     Running   0       
 ```bash 
 flux install
 kubectl get pods -n flux-system
-```
-- Update flux let it support subpath 
-```bash 
-brew update
-brew upgrade fluxcd/tap/flux
-flux install --version=latest \
-  --namespace=flux-system \
-  --components=source-controller,kustomize-controller,helm-controller,notification-controller
 ```
 
 **Expected Output**
@@ -217,12 +183,12 @@ kubectl apply -f config/shared-config-source.yaml
 
 ### Deploy CronJob to sync Git -> Consul KV
 ```bash 
-kubectl apply -f k8s/consul-sync-job.yaml
+kubectl apply -f k8s/gitops-consul-sync.yaml
 ```
 
 ### Deploy Spring demo app(s)
 ```bash 
-kubectl apply -f k8s/spring-app.yaml
+kubectl apply -f k8s/spring-consul-app.yaml
 ```
 
 ### Verify dynamic configuration 
