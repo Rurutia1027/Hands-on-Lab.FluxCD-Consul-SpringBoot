@@ -1,4 +1,4 @@
-# Hands-on-Lab.FluxCD-Consul-SpringBoot | [![Hands-on Lab Spring Boot & Consul & Flux GitOps](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml/badge.svg)](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml)
+<img width="1408" height="736" alt="增加Kubernetes_cronjob_flux组件的配置流程图 (1)" src="https://github.com/user-attachments/assets/6c9e4ccb-7aa8-4422-8cda-ca50e6956bc6" /># Hands-on-Lab.FluxCD-Consul-SpringBoot | [![Hands-on Lab Spring Boot & Consul & Flux GitOps](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml/badge.svg)](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml)
 _Deploy a Spring Boot app with dynamic Consul KV configuration on local Kubernetes using FluxCD GitOps._
 
 **Focus**: Microservice dynamic configuration with Consul KV integration via FluxCD GitOps. 
@@ -19,38 +19,8 @@ This repository is a **hands-on**, **lightweight**, and **verifiable lab** for e
 > Note: Flux CRDs (GitRepository, Kustomization, HelmRelease) are a separate operational path for GitOps management of Kubernetes resources. This repo does not explore that branch in detail--another repo will cover it. 
 
 ## Diagram Flow 
-```mermaid
-flowchart TD
-    subgraph "Hands-on Lab Flow"
-        A[Remote Git Repo  ]
-        B[FluxCD Controller ]
-        C[CronJob in Cluster  ]
-        D[Consul KV Store]
-        E[Spring Boot App listens & reacts]
-        
-        A --> B
-        B --> C
-        C --> D
-        D --> E
-    end
+<img width="1100" height="630" alt="Screenshot 2025-09-22 at 23 26 11" src="https://github.com/user-attachments/assets/d143b3df-75dd-4574-a9e3-db746ebbcde9" />
 
-    subgraph "Flux CRD / GitOps Operational Branch (Optional)"
-        F[GitRepository / Kustomization / HelmRelease CRDs]
-        G[Kubernetes Cluster Resources]
-        
-        A --> F
-        F --> G
-        %% Note: This branch is for cluster-level resource management
-        %% It does not directly affect Consul or Spring Boot app
-    end
-
-    %% Annotations
-    classDef handsOn fill:#DFF0D8,stroke:#3C763D,stroke-width:2px
-    classDef crdBranch fill:#FCF8E3,stroke:#8A6D3B,stroke-width:2px
-
-    class A,B,C,D,E handsOn
-    class F,G crdBranch
-```
 
 ## Project Structure 
 
