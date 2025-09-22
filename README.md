@@ -19,7 +19,8 @@ This repository is a **hands-on**, **lightweight**, and **verifiable lab** for e
 > Note: Flux CRDs (GitRepository, Kustomization, HelmRelease) are a separate operational path for GitOps management of Kubernetes resources. This repo does not explore that branch in detail--another repo will cover it. 
 
 ## Project Architecture
-<img width="1100" height="630" alt="Screenshot 2025-09-22 at 23 26 11" src="https://github.com/user-attachments/assets/d143b3df-75dd-4574-a9e3-db746ebbcde9" />
+
+<img width="789" height="486" alt="Screenshot 2025-09-23 at 05 24 26" src="https://github.com/user-attachments/assets/c9dfee7f-35d0-42ac-bbbe-5013cf6a52b2" />
 
 
 ## Project Structure 
