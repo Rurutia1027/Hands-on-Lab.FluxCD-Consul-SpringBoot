@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: nanachi1027/spring-consul-config-app:20250921150118
+          image: nanachi1027/spring-consul-config-app:20250922041811
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8180
