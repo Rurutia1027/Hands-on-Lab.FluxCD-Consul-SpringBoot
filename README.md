@@ -1,4 +1,4 @@
-# Hands-on-Lab.FluxCD-Consul-SpringBoot
+# Hands-on-Lab.FluxCD-Consul-SpringBoot | [![Hands-on Lab Spring Boot & Consul & Flux GitOps](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml/badge.svg)](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml)
 _Deploy a Spring Boot app with dynamic Consul KV configuration on local Kubernetes using FluxCD GitOps._
 
 **Focus**: Microservice dynamic configuration with Consul KV integration via FluxCD GitOps. 
@@ -14,7 +14,7 @@ This repository is a **hands-on**, **lightweight**, and **verifiable lab** for e
 - Portable local Kubernetes environment using Kind
 - Remote Git repo → Flux detects changes → CronJob syncs → Consul KV → Spring Boot app
 - Hands-on, minimal setup, theory & practice combined
-> Note: Flux CRDs (GitRepository, Kustomization, HelmRelease) are a separate operational path for GitOps management of Kubernentes resources. This repo does not explore that branch in detail--another repo will cover it. 
+> Note: Flux CRDs (GitRepository, Kustomization, HelmRelease) are a separate operational path for GitOps management of Kubernetes resources. This repo does not explore that branch in detail--another repo will cover it. 
 
 ## Diagram Flow 
 ```mermaid
