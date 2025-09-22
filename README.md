@@ -3,6 +3,8 @@ _Deploy a Spring Boot app with dynamic Consul KV configuration on local Kubernet
 
 **Focus**: Microservice dynamic configuration with Consul KV integration via FluxCD GitOps. 
 
+**👉 Medium Blog: [From Spring Cloud Config to Kubernetes: A Microservices Configuration Journey](https://medium.com/devops-dev/ensure-continuous-delivery-on-kubernetes-with-gitops-flux-cd-153488dd5149)**
+
 ## Project Overview 
 This repository is a **hands-on**, **lightweight**, and **verifiable lab** for exploring:
 - GitOps with FluxCD
