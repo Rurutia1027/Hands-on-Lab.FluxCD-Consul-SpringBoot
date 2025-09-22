@@ -3,8 +3,8 @@ services:
     image: hashicorp/consul:latest
     container_name: local-consul
     ports:
-      - "18500:8500"      # Consul UI & API Port
-      - "18600:8600/udp"  # Consul DNS  Port
+      - "8500:8500"      # Consul UI & API Port
+      - "8600:8600/udp"  # Consul DNS  Port
     command: "agent -dev -client=0.0.0.0"
     volumes:
       - consul-data:/consul/data
@@ -16,49 +16,49 @@ services:
     networks:
       - spring-consul-config-app
 
-  spring-app-1:
-    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
-    container_name: spring-app-1
-    environment:
-      - SPRING_CLOUD_CONSUL_HOST=local-consul
-      - SPRING_CLOUD_CONSUL_PORT=8500
-    ports:
-      - "8181:8180"
-    networks:
-      - spring-consul-config-app
-
-  spring-app-2:
-    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
-    container_name: spring-app-2
-    environment:
-      - SPRING_CLOUD_CONSUL_HOST=local-consul
-      - SPRING_CLOUD_CONSUL_PORT=8500
-    ports:
-      - "8182:8180"
-    networks:
-      - spring-consul-config-app
-
-  spring-app-3:
-    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
-    container_name: spring-app-3
-    environment:
-      - SPRING_CLOUD_CONSUL_HOST=local-consul
-      - SPRING_CLOUD_CONSUL_PORT=8500
-    ports:
-      - "8183:8180"
-    networks:
-      - spring-consul-config-app
-
-  spring-app-4:
-    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
-    container_name: spring-app-4
-    environment:
-      - SPRING_CLOUD_CONSUL_HOST=local-consul
-      - SPRING_CLOUD_CONSUL_PORT=8500
-    ports:
-      - "8184:8180"
-    networks:
-      - spring-consul-config-app
+#  spring-app-1:
+#    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
+#    container_name: spring-app-1
+#    environment:
+#      - SPRING_CLOUD_CONSUL_HOST=local-consul
+#      - SPRING_CLOUD_CONSUL_PORT=8500
+#    ports:
+#      - "8181:8180"
+#    networks:
+#      - spring-consul-config-app
+#
+#  spring-app-2:
+#    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
+#    container_name: spring-app-2
+#    environment:
+#      - SPRING_CLOUD_CONSUL_HOST=local-consul
+#      - SPRING_CLOUD_CONSUL_PORT=8500
+#    ports:
+#      - "8182:8180"
+#    networks:
+#      - spring-consul-config-app
+#
+#  spring-app-3:
+#    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
+#    container_name: spring-app-3
+#    environment:
+#      - SPRING_CLOUD_CONSUL_HOST=local-consul
+#      - SPRING_CLOUD_CONSUL_PORT=8500
+#    ports:
+#      - "8183:8180"
+#    networks:
+#      - spring-consul-config-app
+#
+#  spring-app-4:
+#    image: nanachi1027/spring-consul-config-app:1.0-SNAPSHOT
+#    container_name: spring-app-4
+#    environment:
+#      - SPRING_CLOUD_CONSUL_HOST=local-consul
+#      - SPRING_CLOUD_CONSUL_PORT=8500
+#    ports:
+#      - "8184:8180"
+#    networks:
+#      - spring-consul-config-app
 
 networks:
   spring-consul-config-app:

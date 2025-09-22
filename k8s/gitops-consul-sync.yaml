@@ -18,5 +18,5 @@ spec:
                 apk add --no-cache curl bash git
                 git clone https://github.com/Rurutia1027/hands-on-shared-config-repo.git /tmp/config-repo
                 FILE="/tmp/config-repo/Hands-on-Lab.FluxCD-Consul-SpringBoot/spring-consul-app/application.yaml"
-                curl --request PUT --data-binary @"${FILE}" http://consul-consul-server.consul:8500/v1/kv/config/spring-consul-config-app/application.prod
+                curl --request PUT --data-binary @"${FILE}" http://consul-consul-server.consul:8500/v1/kv/config/spring-consul-config-app/application-prod.yml
           restartPolicy: OnFailure

@@ -6,15 +6,16 @@ spring:
   cloud:
     consul:
       # in dev mode, declare the environment variable in the IDEA/Edit Configuration
-      host: ${SPRING_CLOUD_CONSUL_HOST:consul-consul-server.consul}
+      host: ${SPRING_CLOUD_CONSUL_HOST:localhost}
       port: ${SPRING_CLOUD_CONSUL_PORT:8500}
       config:
         watch:
           enabled: true
-          delay: 10000 # MS
+          delay: 500 # MS
         format: yaml
-        prefixes:
+        prefix:
           - config/spring-consul-config-app
+        data-key: application.yml
   profiles:
     active: prod
 
