@@ -1,4 +1,4 @@
-<img width="1408" height="736" alt="增加Kubernetes_cronjob_flux组件的配置流程图 (1)" src="https://github.com/user-attachments/assets/6c9e4ccb-7aa8-4422-8cda-ca50e6956bc6" /># Hands-on-Lab.FluxCD-Consul-SpringBoot | [![Hands-on Lab Spring Boot & Consul & Flux GitOps](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml/badge.svg)](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml)
+# Hands-on-Lab.FluxCD-Consul-SpringBoot | [![Hands-on Lab Spring Boot & Consul & Flux GitOps](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml/badge.svg)](https://github.com/Rurutia1027/Hands-on-Lab.FluxCD-Consul-SpringBoot/actions/workflows/ci-pipeline.yaml)
 _Deploy a Spring Boot app with dynamic Consul KV configuration on local Kubernetes using FluxCD GitOps._
 
 **Focus**: Microservice dynamic configuration with Consul KV integration via FluxCD GitOps. 
@@ -18,7 +18,7 @@ This repository is a **hands-on**, **lightweight**, and **verifiable lab** for e
 - Hands-on, minimal setup, theory & practice combined
 > Note: Flux CRDs (GitRepository, Kustomization, HelmRelease) are a separate operational path for GitOps management of Kubernetes resources. This repo does not explore that branch in detail--another repo will cover it. 
 
-## Diagram Flow 
+## Project Architecture
 <img width="1100" height="630" alt="Screenshot 2025-09-22 at 23 26 11" src="https://github.com/user-attachments/assets/d143b3df-75dd-4574-a9e3-db746ebbcde9" />
 
 
@@ -147,11 +147,11 @@ kubectl apply -f config/shared-config-source.yaml
 - `--branch`: branch to monitor 
 - `--interval`: polling interval
 - `--sub-path`: specific directory inside the repo to monitor (optional)
-    > use this to restrict Flux to only watch the hands-on lab configuration,
+    > Use this to restrict Flux to only watch the hands-on lab configuration,
     > avoiding triggers from unrelated files 
 - `--export`: saves the Kubernetes CRD YAML locally for `kubectl apply`
 
-> Note: This export generated YAML is only for K8S to load. Flux will monitor the **remote Git repo**, and this YAML does not directly affect Consul or Spring Boot app. 
+> Note: This export-generated YAML is only for K8S to load. Flux will monitor the **remote Git repo**, and this YAML does not directly affect Consul or Spring Boot app. 
 
 ### Deploy CronJob to sync Git -> Consul KV
 ```bash 
@@ -166,7 +166,7 @@ kubectl apply -f k8s/spring-consul-app.yaml
 ### Verify dynamic configuration 
 - Modify the **remote Git repo**'s `applicaiton.prod.yaml` and push to GitHub.
 - Flux detects the **change** -> triggers **CronJob** -> updates **Consul KV**
-- Spring Boot app listens to Consul -> logs events or parse configuraiton changes. 
+- Spring Boot app listens to Consul -> logs events or parses configuration changes. 
 
 
 ## CRD Branch (Optional / Not Covered)
